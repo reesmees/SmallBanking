@@ -28,8 +28,10 @@ namespace SmallBanking.Entities
             get { return accountNumber; }
             private set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("Account Number cannot be null or contain only whitespace.");
+                if (value == null)
+                    throw new ArgumentNullException("Account Number cannot be null.");
+                else if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Account Number cannot be only white space.");
                 else if (!int.TryParse(value, out int number))
                     throw new ArgumentException("Account Number can only contain numbers.");
                 else
@@ -76,7 +78,7 @@ namespace SmallBanking.Entities
             result += monthlyAccountFee;
 
             List<Transaction> monthlyTransactions = Transactions.FindAll(x => x.DateTimeOfTransaction.Month.Equals((int)month));
-            result += monthlyTransactions.Count * transactionCost;
+            result += (monthlyTransactions.Count * transactionCost);
 
             return result;
         }

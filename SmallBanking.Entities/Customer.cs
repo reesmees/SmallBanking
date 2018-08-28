@@ -43,8 +43,10 @@ namespace SmallBanking.Entities
             get { return cpr; }
             private set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentNullException("CPR cannot be null or only whitespace.");
+                if (value == null)
+                    throw new ArgumentNullException("CPR cannot be null.");
+                else if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("CPR cannot be only white space.");
                 else if (value.Length != 10)
                     throw new ArgumentException("CPR must be 10 digits.");
                 else if (!int.TryParse(value, out int number))
@@ -57,11 +59,25 @@ namespace SmallBanking.Entities
         public decimal MonthlyAccountFee
         {
             get { return monthlyAccountFee; }
+            protected set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Monthly account fee cannot be less than zero.");
+                else
+                    monthlyAccountFee = value;
+            }
         }
 
         public decimal TransactionCost
         {
             get { return transactionCost; }
+            protected set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Transaction cost cannot be less than zero.");
+                else
+                    transactionCost = value;
+            }
         }
 
         public decimal CalculateCostOfMonth(Month month)

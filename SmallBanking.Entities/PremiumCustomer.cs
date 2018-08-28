@@ -8,19 +8,12 @@ namespace SmallBanking.Entities
 {
     public class PremiumCustomer : Customer
     {
-        private decimal transactionCost = 1.20m;
-        private decimal monthlyAccountFee = 12;
-
-        public PremiumCustomer(string cpr, string name, List<Account> accounts) : base(cpr, name, accounts) { }
-
-        public new decimal MonthlyAccountFee
+        public PremiumCustomer(string cpr, string name, List<Account> accounts) : base(cpr, name, accounts)
         {
-            get { return monthlyAccountFee; }
+            MonthlyAccountFee = 12;
+            TransactionCost = 1.2m;
         }
 
-        public new decimal TransactionCost
-        {
-            get { return transactionCost; }
-        }
+        
     }
 }

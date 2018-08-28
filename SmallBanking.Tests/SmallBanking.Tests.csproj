@@ -49,8 +49,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TransactionTestClass.cs" />
+    <Compile Include="AccountTestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CheckingAccountTestClass.cs" />
+    <Compile Include="SavingAccoungTestClass.cs" />
+    <Compile Include="CustomerTestClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

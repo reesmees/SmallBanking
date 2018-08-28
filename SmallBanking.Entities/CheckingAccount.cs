@@ -8,7 +8,7 @@ namespace SmallBanking.Entities
 {
     public class CheckingAccount : Account
     {
-        public const int NoMonthlyFreeTransactions = 20;
+        public const int noMonthlyFreeTransactions = 20;
 
         public CheckingAccount(decimal balance, string accountNumber) : base(accountNumber, balance) { }
 
@@ -19,9 +19,9 @@ namespace SmallBanking.Entities
 
             List<Transaction> monthlyTransactions = Transactions.FindAll(x => x.DateTimeOfTransaction.Month.Equals((int)month));
 
-            if (monthlyTransactions.Count > NoMonthlyFreeTransactions)
+            if (monthlyTransactions.Count > noMonthlyFreeTransactions)
             {
-                result += transactionCost * (monthlyTransactions.Count - NoMonthlyFreeTransactions);
+                result += (transactionCost * (monthlyTransactions.Count - noMonthlyFreeTransactions));
             }
 
             return result;

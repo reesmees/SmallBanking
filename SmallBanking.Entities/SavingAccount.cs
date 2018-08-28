@@ -19,10 +19,10 @@ namespace SmallBanking.Entities
         {
             get { return interest; }
             set {
-                if (value > 0)
-                    interest = value;
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Interest cannot be less than zero.");
                 else
-                    throw new ArgumentOutOfRangeException("Interest must be greater than zero.");
+                    interest = value;
             }
         }
 
