@@ -42,7 +42,7 @@ namespace SmallBanking.Entities
         public decimal Balance
         {
             get { return balance; }
-            set {
+            protected set {
                 if (value >= 0)
                     balance = value;
                 else
